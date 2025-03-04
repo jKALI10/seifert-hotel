@@ -75,7 +75,7 @@ export function MainNav() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "fixed inset-0 bg-background z-40 flex flex-col pt-20 px-6 menu-transition md:hidden",
+          "fixed inset-0 top-16 bg-background z-40 flex flex-col pt-6 px-6 menu-transition md:hidden overflow-y-auto",
           isOpen ? "transform-none" : "transform translate-x-full"
         )}
       >
@@ -88,6 +88,7 @@ export function MainNav() {
                 "text-xl font-medium py-2",
                 pathname === route.href && "text-amber-600"
               )}
+              onClick={() => setIsOpen(false)}
             >
               {route.label}
             </Link>
