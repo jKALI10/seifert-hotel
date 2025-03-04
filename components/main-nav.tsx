@@ -23,8 +23,10 @@ export function MainNav() {
 
   // Close menu when route changes
   useEffect(() => {
-    setIsOpen(false);
-  }, []);
+    if (pathname) {
+      setIsOpen(false);
+    }
+  }, [pathname]);
 
   // Prevent scrolling when menu is open
   useEffect(() => {
@@ -75,9 +77,10 @@ export function MainNav() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "fixed inset-0 top-16 bg-background z-40 flex flex-col pt-6 px-6 menu-transition md:hidden overflow-y-auto",
-          isOpen ? "transform-none" : "transform translate-x-full"
+          "fixed inset-x-0 top-16 bottom-0 bg-background z-40 flex flex-col pt-6 px-6 menu-transition md:hidden overflow-y-auto",
+          isOpen ? "translate-x-0" : "translate-x-full"
         )}
+        style={{ height: "calc(100vh - 4rem)" }}
       >
         <nav className="flex flex-col gap-6 text-center">
           {routes.map((route) => (
